@@ -1,0 +1,9 @@
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\bin\Debug\AnalysisGrid_Library.dll
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\bin\Debug\AnalysisGrid_Library.pdb
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\obj\Debug\ResolveAssemblyReference.cache
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\obj\Debug\AnalysisGrid_Library.Analysis_ParentGrid.resources
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\obj\Debug\AnalysisGrid_Library.Analysis_SummaryGrid_Control.resources
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\obj\Debug\ResGen.read.1.tlog
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\obj\Debug\ResGen.write.1.tlog
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\obj\Debug\AnalysisGrid_Library.dll
+C:\rms\refactor\RMS_v3\AnalysisGrid_Library\obj\Debug\AnalysisGrid_Library.pdb

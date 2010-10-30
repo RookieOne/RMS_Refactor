@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMS_DALObjects", "..\RMS_Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMS v3", "RMS v3\RMS v3.csproj", "{57C0C65C-870E-45F8-8AD0-644CB4E1815C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.ApplicationBlocks.Data", "..\..\Program Files\Microsoft Application Blocks for .NET\Data Access\Code\CS\Microsoft.ApplicationBlocks.Data\Microsoft.ApplicationBlocks.Data.csproj", "{30933672-466E-4F67-A111-ABF267539146}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateGrid_Library", "RateGrid_Library\RateGrid_Library.csproj", "{F064CD6B-BE76-4FD4-A7B8-200AD3F7A54A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditRate_Library", "EditRate_Library\EditRate_Library.csproj", "{4CAF5083-0A88-408E-B20C-E3C60CCFEF37}"
@@ -36,8 +34,6 @@ Global
 		{57C0C65C-870E-45F8-8AD0-644CB4E1815C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C0C65C-870E-45F8-8AD0-644CB4E1815C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C0C65C-870E-45F8-8AD0-644CB4E1815C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30933672-466E-4F67-A111-ABF267539146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30933672-466E-4F67-A111-ABF267539146}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F064CD6B-BE76-4FD4-A7B8-200AD3F7A54A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F064CD6B-BE76-4FD4-A7B8-200AD3F7A54A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F064CD6B-BE76-4FD4-A7B8-200AD3F7A54A}.Release|Any CPU.ActiveCfg = Release|Any CPU

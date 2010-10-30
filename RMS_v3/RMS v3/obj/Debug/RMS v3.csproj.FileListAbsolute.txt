@@ -1,2 +1,40 @@
 C:\rms\RMS_v3\RMS v3\obj\Debug\RMS v3.exe
 C:\rms\RMS_v3\RMS v3\obj\Debug\RMS v3.pdb
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS v3.exe
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS v3.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMS v3.exe
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMS v3.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\AnalysisGrid_Library.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\EditRate_Library.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RateGrid_Library.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMSCtrl_Library.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMS_BusinessObjects.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMS_DALObjects.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\VB_ExcelReport_Library.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\office.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\Microsoft.Vbe.Interop.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\Interop.Excel.dll
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMS_BusinessObjects.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMS_DALObjects.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\AnalysisGrid_Library.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\EditRate_Library.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RateGrid_Library.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\RMSCtrl_Library.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\VB_ExcelReport_Library.pdb
+C:\rms\refactor\RMS_v3\RMS v3\bin\Debug\office.xml
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\ResolveAssemblyReference.cache
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.AdjustRatesForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.AnalysisForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.Contract_Control.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.CoverageForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.EditRateForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.MainForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.ManageDataSetsForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.ManageOtherDataForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.NewContractForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.NewDataSetForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.NewRateScheduleForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.RateSchedule_Control.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\RMS_v3.testForm.resources
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\ResGen.read.1.tlog
+C:\rms\refactor\RMS_v3\RMS v3\obj\Debug\ResGen.write.1.tlog

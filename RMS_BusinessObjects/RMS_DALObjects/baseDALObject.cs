@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using Microsoft.ApplicationBlocks.Data;
+//using Microsoft.ApplicationBlocks.Data;
 
 namespace RMS_DALObjects
 {
@@ -28,7 +28,10 @@ namespace RMS_DALObjects
 		public DataSet getDataSet(string strSQL)
 		{
 			try
-			{	return SqlHelper.ExecuteDataset(strConn, CommandType.Text, strSQL);	}
+			{
+			    return null;
+			    //return SqlHelper.ExecuteDataset(strConn, CommandType.Text, strSQL);
+			}
 			catch (SqlException e)
 			{
 				string msg = e.Message;
@@ -70,14 +73,16 @@ namespace RMS_DALObjects
 
 
 		public SqlParameter[] getParameters(string storedProcedureName)
-		{	return SqlHelperParameterCache.GetSpParameterSet(strConn, storedProcedureName);	}
+		{
+            return null; //SqlHelperParameterCache.GetSpParameterSet(strConn, storedProcedureName);	
+           }
 
 		public void executeUpdate(string storedProcedureName, SqlParameter[] sqlParams)
 		{
 			try
 			{
 				sqlParams[sqlParams.Length-3].Value = "RMS";
-				SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
+				//SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
 			}
 			catch (SqlException e)
 			{	string msg = e.Message;	}
@@ -87,7 +92,7 @@ namespace RMS_DALObjects
 		{
 			try
 			{
-				SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
+				//SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
 			}
 			catch(SqlException e)
 			{	string msg = e.Message;	}

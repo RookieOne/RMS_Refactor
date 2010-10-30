@@ -1,0 +1,7 @@
+C:\rms\refactor\RMS_BusinessObjects\RMS_DALObjects\obj\Debug\ResolveAssemblyReference.cache
+C:\rms\refactor\RMS_BusinessObjects\RMS_DALObjects\obj\Debug\RMS_DALObjects.dll
+C:\rms\refactor\RMS_BusinessObjects\RMS_DALObjects\obj\Debug\RMS_DALObjects.pdb
+C:\rms\refactor\RMS_BusinessObjects\RMS_DALObjects\bin\Debug\RMS_DALObjects.dll
+C:\rms\refactor\RMS_BusinessObjects\RMS_DALObjects\bin\Debug\RMS_DALObjects.pdb
+C:\rms\refactor\RMS_BusinessObjects\RMS_DALObjects\bin\Debug\RMS_BusinessObjects.dll
+C:\rms\refactor\RMS_BusinessObjects\RMS_DALObjects\bin\Debug\RMS_BusinessObjects.pdb

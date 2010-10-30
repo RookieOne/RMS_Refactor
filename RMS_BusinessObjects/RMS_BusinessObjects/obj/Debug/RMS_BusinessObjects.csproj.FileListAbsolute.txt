@@ -1,0 +1,5 @@
+C:\rms\refactor\RMS_BusinessObjects\RMS_BusinessObjects\bin\Debug\RMS_BusinessObjects.dll
+C:\rms\refactor\RMS_BusinessObjects\RMS_BusinessObjects\bin\Debug\RMS_BusinessObjects.pdb
+C:\rms\refactor\RMS_BusinessObjects\RMS_BusinessObjects\obj\Debug\ResolveAssemblyReference.cache
+C:\rms\refactor\RMS_BusinessObjects\RMS_BusinessObjects\obj\Debug\RMS_BusinessObjects.dll
+C:\rms\refactor\RMS_BusinessObjects\RMS_BusinessObjects\obj\Debug\RMS_BusinessObjects.pdb

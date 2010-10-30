@@ -84,11 +84,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Program Files\Microsoft Application Blocks for .NET\Data Access\Code\CS\Microsoft.ApplicationBlocks.Data\Microsoft.ApplicationBlocks.Data.csproj">
-      <Name>Microsoft.ApplicationBlocks.Data</Name>
-      <Project>{30933672-466E-4F67-A111-ABF267539146}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
     <Reference Include="RMS_BusinessObjects">
       <Name>RMS_BusinessObjects</Name>
       <HintPath>..\RMS_BusinessObjects\bin\Debug\RMS_BusinessObjects.dll</HintPath>
