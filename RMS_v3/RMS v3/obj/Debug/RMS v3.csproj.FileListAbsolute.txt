@@ -1,0 +1,2 @@
+C:\rms\RMS_v3\RMS v3\obj\Debug\RMS v3.exe
+C:\rms\RMS_v3\RMS v3\obj\Debug\RMS v3.pdb

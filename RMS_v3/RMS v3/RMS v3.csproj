@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{57C0C65C-870E-45F8-8AD0-644CB4E1815C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>..\Graphics\Icons\HAL 9000.ico</ApplicationIcon>
+    <AssemblyKeyContainerName />
+    <AssemblyName>RMS v3</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RMS_v3</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RMS_BusinessObjects\RMS_BusinessObjects\RMS_BusinessObjects.csproj">
+      <Name>RMS_BusinessObjects</Name>
+      <Project>{58FABAE3-D885-4A76-945D-887F8E878D7D}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RMS_BusinessObjects\RMS_DALObjects\RMS_DALObjects.csproj">
+      <Name>RMS_DALObjects</Name>
+      <Project>{C2E27776-E23E-4668-AAC8-4C466E4DD6F2}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\AnalysisGrid_Library\AnalysisGrid_Library.csproj">
+      <Name>AnalysisGrid_Library</Name>
+      <Project>{3106A1D9-C67B-4518-AC10-C16013B40AB8}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\EditRate_Library\EditRate_Library.csproj">
+      <Name>EditRate_Library</Name>
+      <Project>{4CAF5083-0A88-408E-B20C-E3C60CCFEF37}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\RateGrid_Library\RateGrid_Library.csproj">
+      <Name>RateGrid_Library</Name>
+      <Project>{F064CD6B-BE76-4FD4-A7B8-200AD3F7A54A}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\RMSCtrl_Library\RMSCtrl_Library.csproj">
+      <Name>RMSCtrl_Library</Name>
+      <Project>{5858A6DA-C894-4E2D-98AB-49CA9E2A66BA}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\VB_ExcelReport_Library\VB_ExcelReport_Library.vbproj">
+      <Name>VB_ExcelReport_Library</Name>
+      <Project>{63933E44-35A8-4160-AF6D-48BFB0E3AEFD}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdjustRatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contract_Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CoverageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditRateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageDataSetsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageOtherDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewContractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewDataSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewRateScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RateSchedule_Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RMS_Controller.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="testForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Content Include="App.ico" />
+    <EmbeddedResource Include="AdjustRatesForm.resx">
+      <DependentUpon>AdjustRatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisForm.resx">
+      <DependentUpon>AnalysisForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contract_Control.resx">
+      <DependentUpon>Contract_Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoverageForm.resx">
+      <DependentUpon>CoverageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditRateForm.resx">
+      <DependentUpon>EditRateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageDataSetsForm.resx">
+      <DependentUpon>ManageDataSetsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageOtherDataForm.resx">
+      <DependentUpon>ManageOtherDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewContractForm.resx">
+      <DependentUpon>NewContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewDataSetForm.resx">
+      <DependentUpon>NewDataSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewRateScheduleForm.resx">
+      <DependentUpon>NewRateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RateSchedule_Control.resx">
+      <DependentUpon>RateSchedule_Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testForm.resx">
+      <DependentUpon>testForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58FABAE3-D885-4A76-945D-887F8E878D7D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon />
+    <AssemblyKeyContainerName />
+    <AssemblyName>RMS_BusinessObjects</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RMS_BusinessObjects</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnalysisBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="baseBusinessObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodesBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodesManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeTypeBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContractBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contract_Collection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CoverageBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EncounterDataBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EntityBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity_Collection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InsurancePlanBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InsurancePlan_Collection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PassThrusBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RateBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RateScheduleBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RateSchedule_Collection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_ASCRateBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_BaseRateBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_CeilingBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_Collection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_FFS_In_CaseRateBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_FFS_Out_CaseRateBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_FFS_Out_POCBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_FFS_POCBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_FloorBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_IgnoreBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_LessorOfBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_PassThruBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_PerDiemBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_StopLossBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rate_W_PassThruBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>
