@@ -100,7 +100,7 @@ namespace RMS_v3
 
 		private void setupUI()
 		{
-      DataSet oDataSet = data.getDataSet("SELECT * FROM Dataset ORDER BY DatasetName ASC");
+      DataSet oDataSet = data.GetDataSet("SELECT * FROM Dataset ORDER BY DatasetName ASC");
 
       datasetComboBx.DisplayMember = "DatasetName";
       datasetComboBx.ValueMember = "DatasetSeqNum";
@@ -546,7 +546,7 @@ namespace RMS_v3
 		DataSet resultsDS;
 		string rateSchedulesAnalyzed;
 
-		baseDALObject data = new baseDALObject();
+		BaseDALObject data = new BaseDALObject();
 
 
 		public void analyzeRateSchedule()
@@ -587,7 +587,7 @@ namespace RMS_v3
 				{	filterEntityList.Add("All");	}
 				else
 				{
-					oDataSet = data.getDataSet("SELECT * FROM Entity_RateSched, Entity WHERE Entity_RateSched.EntityCode=Entity.EntityCode AND RateSchedSeqNum=" + rateScheduleID);
+					oDataSet = data.GetDataSet("SELECT * FROM Entity_RateSched, Entity WHERE Entity_RateSched.EntityCode=Entity.EntityCode AND RateSchedSeqNum=" + rateScheduleID);
 
 					if (oDataSet.Tables[0].Rows.Count == 0)
 					{	filterEntityList.Add("All");	}
@@ -602,7 +602,7 @@ namespace RMS_v3
 				{	filterInsurancePlanCodeList.Add("All");	}
 				else
 				{
-					oDataSet = data.getDataSet("SELECT * FROM InsurncPlanCode WHERE RateSchedSeqNum=" + rateScheduleID);
+					oDataSet = data.GetDataSet("SELECT * FROM InsurncPlanCode WHERE RateSchedSeqNum=" + rateScheduleID);
 
 					if (oDataSet.Tables[0].Rows.Count == 0)
 					{	filterInsurancePlanCodeList.Add("All");	}

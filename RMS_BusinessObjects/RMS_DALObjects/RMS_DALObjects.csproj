@@ -109,7 +109,7 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="baseDALObject.cs">
+    <Compile Include="BaseDALObject.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CodesDAL.cs">

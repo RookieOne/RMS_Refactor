@@ -9,7 +9,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for CoverageDAL.
 	/// </summary>
-	public class CoverageDAL : baseDALObject
+	public class CoverageDAL : BaseDALObject
 	{
 		#region "Data Fields"
 
@@ -33,7 +33,7 @@ namespace RMS_DALObjects
 
 		public CoverageBO getRateScheduleCoverage(int rateScheduleID)
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT * FROM RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT * FROM RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
 
 			CoverageBO coverage = new CoverageBO();
 
@@ -46,7 +46,7 @@ namespace RMS_DALObjects
 				coverage.InsurancePlans = this.getInsurancePlansCovered(rateScheduleID);
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return coverage;
 		}
@@ -54,7 +54,7 @@ namespace RMS_DALObjects
 
 		public Entity_Collection getEntitiesCovered(int rateScheduleID)
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT Entity.EntityCode as EntityCode, CompanyCode, EntityDescr FROM Entity, Entity_RateSched WHERE Entity.EntityCode=Entity_RateSched.EntityCode AND RateSchedSeqNum=" + rateScheduleID);
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT Entity.EntityCode as EntityCode, CompanyCode, EntityDescr FROM Entity, Entity_RateSched WHERE Entity.EntityCode=Entity_RateSched.EntityCode AND RateSchedSeqNum=" + rateScheduleID);
 
       Entity_Collection entities = new Entity_Collection();
       EntityBO entityToAdd;
@@ -69,7 +69,7 @@ namespace RMS_DALObjects
 				entities.addEntity(entityToAdd);
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return entities;
 		}
@@ -77,7 +77,7 @@ namespace RMS_DALObjects
 
 		public Entity_Collection getEntitiesCovered()
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT EntityCode, CompanyCode, EntityDescr FROM Entity");
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT EntityCode, CompanyCode, EntityDescr FROM Entity");
 
 			Entity_Collection entities = new Entity_Collection();
 			EntityBO entityToAdd;
@@ -92,7 +92,7 @@ namespace RMS_DALObjects
 				entities.addEntity(entityToAdd);
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return entities;
 		}
@@ -101,7 +101,7 @@ namespace RMS_DALObjects
 
 		public InsurancePlan_Collection getInsurancePlansCovered(int rateScheduleID)
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT PayorMaster.InsurncPlanCode as InsPlanCode, LongDescr, NRContinuumText, TierText, TSIFinclClassPlusText FROM InsurncPlanCode, PayorMaster WHERE InsurncPlanCode.InsurncPlanCode=PayorMaster.InsurncPlanCode AND RateSchedSeqNum=" + rateScheduleID);
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT PayorMaster.InsurncPlanCode as InsPlanCode, LongDescr, NRContinuumText, TierText, TSIFinclClassPlusText FROM InsurncPlanCode, PayorMaster WHERE InsurncPlanCode.InsurncPlanCode=PayorMaster.InsurncPlanCode AND RateSchedSeqNum=" + rateScheduleID);
 
 			InsurancePlan_Collection insPlans = new InsurancePlan_Collection();
 			InsurancePlanBO insPlanToAdd;
@@ -118,7 +118,7 @@ namespace RMS_DALObjects
 				insPlans.addInsurancePlan(insPlanToAdd);
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return insPlans;
 		}
@@ -126,7 +126,7 @@ namespace RMS_DALObjects
 
 		public InsurancePlan_Collection getInsurancePlansCovered()
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT InsurncPlanCode as InsPlanCode, LongDescr, NRContinuumText, TierText, TSIFinclClassPlusText FROM PayorMaster");
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT InsurncPlanCode as InsPlanCode, LongDescr, NRContinuumText, TierText, TSIFinclClassPlusText FROM PayorMaster");
 
 			InsurancePlan_Collection insPlans = new InsurancePlan_Collection();
 			InsurancePlanBO insPlanToAdd;
@@ -143,7 +143,7 @@ namespace RMS_DALObjects
 				insPlans.addInsurancePlan(insPlanToAdd);
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return insPlans;
 		}
@@ -186,7 +186,7 @@ namespace RMS_DALObjects
 
 		public void deleteCoverage(int rateScheduleID)
 		{
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT * FROM InsurncPlanCode WHERE RateSchedSeqNum=" + rateScheduleID);
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT * FROM InsurncPlanCode WHERE RateSchedSeqNum=" + rateScheduleID);
 
 			while(sqlDataRdr.Read())
 			{
@@ -194,34 +194,34 @@ namespace RMS_DALObjects
 			}
 
 
-			sqlDataRdr = base.getDataReader("SELECT * FROM Entity_RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
+			sqlDataRdr = base.GetDataReader("SELECT * FROM Entity_RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
 
 			while(sqlDataRdr.Read())
 			{
 				deleteEntity(rateScheduleID, sqlDataRdr["EntityCode"].ToString());
 			}
 
-			base.closeConnection();
+			base.CloseConnection();
 		}
 
 		private void deleteInsurancePlanCode(int rateScheduleID, string insurancePlanCode)
 		{
-			SqlParameter[] sqlParams = base.getParameters("DeleteInsurncPlanCode");
+			SqlParameter[] sqlParams = base.GetParameters("DeleteInsurncPlanCode");
 
 			sqlParams[fld_InsurncPlanCode_RateSchedSeqNum].Value = rateScheduleID;
 			sqlParams[fld_InsurncPlanCode_InsurncPlanCode].Value = insurancePlanCode;
 			
-			base.executeDelete("DeleteInsurncPlanCode", sqlParams);
+			base.ExecuteDelete("DeleteInsurncPlanCode", sqlParams);
 		}
 
 		private void deleteEntity(int rateScheduleID, string entityCode)
 		{
-			SqlParameter[] sqlParams = base.getParameters("DeleteEntity_RateSched");
+			SqlParameter[] sqlParams = base.GetParameters("DeleteEntity_RateSched");
 
 			sqlParams[fld_Entity_RateSchedSeqNum].Value = rateScheduleID;
 			sqlParams[fld_Entity_EntityCode].Value = entityCode;
 			
-			base.executeDelete("DeleteEntity_RateSched", sqlParams);
+			base.ExecuteDelete("DeleteEntity_RateSched", sqlParams);
 		}
 
 		#endregion

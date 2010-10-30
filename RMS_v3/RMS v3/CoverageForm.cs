@@ -43,7 +43,7 @@ namespace RMS_v3
 		private System.ComponentModel.Container components = null;
 
 		private RMS_Controller rmsController;
-		private baseDALObject data;
+		private BaseDALObject data;
 
 		private CoverageDAL coverage;
 
@@ -63,7 +63,7 @@ namespace RMS_v3
 
 			rmsController = in_RmsController;
 
-			data = new baseDALObject();
+			data = new BaseDALObject();
 			coverage = new CoverageDAL();
 
 			//	Setup UI

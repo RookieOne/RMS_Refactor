@@ -245,7 +245,7 @@ namespace RMS_v3
 
 		private void rateIncBtn_Click(object sender, System.EventArgs e)
 		{
-			baseDALObject data = new baseDALObject();
+			BaseDALObject data = new BaseDALObject();
 			RateScheduleDAL rateScheduleData = new RateScheduleDAL();
 
 			RateScheduleBO rateSchedule = rateScheduleData.getRateSchedule(ref rmsController.CodesMngr, rmsController.RateScheduleID);

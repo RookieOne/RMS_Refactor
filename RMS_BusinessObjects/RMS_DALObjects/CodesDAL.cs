@@ -10,7 +10,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for CodesDAL.
 	/// </summary>
-	public class CodesDAL : baseDALObject
+	public class CodesDAL : BaseDALObject
 	{
 		#region "Data Fields"
 
@@ -34,7 +34,7 @@ namespace RMS_DALObjects
 
 		public CodesBO getCodes(ref CodesManager codesMngr, int rateID)
 		{
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT RateCode, RateTypeCode FROM RateCode WHERE (NOT RateTypeCode='PassThru') AND (NOT RateTypeCode='Table') AND RateSeqNum=" + rateID + " ORDER BY RateTypeCode ASC");
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT RateCode, RateTypeCode FROM RateCode WHERE (NOT RateTypeCode='PassThru') AND (NOT RateTypeCode='Table') AND RateSeqNum=" + rateID + " ORDER BY RateTypeCode ASC");
 
 			CodesBO myCodes = new CodesBO(ref codesMngr);
 			string codeType = "";
@@ -67,7 +67,7 @@ namespace RMS_DALObjects
 			if (! (codeType=="") )
 			{	myCodes.addCodes(codeType, codesList); }
 
-			base.closeConnection();
+			base.CloseConnection();
 
 			return myCodes;
 		}
@@ -88,7 +88,7 @@ namespace RMS_DALObjects
 
     private ArrayList getCodeList(string codeType)
     {
-      SqlDataReader sqlDataRdr = base.getDataReader("SELECT * FROM " + codeType + "Rate");
+      SqlDataReader sqlDataRdr = base.GetDataReader("SELECT * FROM " + codeType + "Rate");
 
       ArrayList codeList = new ArrayList();
       while(sqlDataRdr.Read())
@@ -101,7 +101,7 @@ namespace RMS_DALObjects
 		
 		public WeightTableStruct getWeightTable(int rateID)
 		{
-      SqlDataReader sqlDataRdr = base.getDataReader("SELECT RateCode, RateTypeCode FROM RateCode WHERE RateTypeCode='Table' AND RateSeqNum=" + rateID + " ORDER BY RateTypeCode ASC");
+      SqlDataReader sqlDataRdr = base.GetDataReader("SELECT RateCode, RateTypeCode FROM RateCode WHERE RateTypeCode='Table' AND RateSeqNum=" + rateID + " ORDER BY RateTypeCode ASC");
 
 			WeightTableStruct weightTable = new WeightTableStruct(1, "DEFAULT");
       
@@ -109,20 +109,20 @@ namespace RMS_DALObjects
 			{ 
 				weightTable.TableID = Convert.ToInt16(sqlDataRdr["RateCode"]);
 
-				sqlDataRdr = base.getDataReader("SELECT DRGWgtName FROM DRGWgtID WHERE DRGWgtIDSeqNum=" + weightTable.TableID);
+				sqlDataRdr = base.GetDataReader("SELECT DRGWgtName FROM DRGWgtID WHERE DRGWgtIDSeqNum=" + weightTable.TableID);
 
 				if (sqlDataRdr.Read())
 				{	weightTable.TableName = sqlDataRdr["DRGWgtName"].ToString();	}
 			}
 
-			base.closeConnection();
+			base.CloseConnection();
 
 			return weightTable;
 		}
 
 		public ArrayList getWeightTables()
 		{
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT DRGWgtIDSeqNum, DRGWgtName FROM DRGWgtID");
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT DRGWgtIDSeqNum, DRGWgtName FROM DRGWgtID");
 
 			ArrayList weightTables = new ArrayList();
       
@@ -131,7 +131,7 @@ namespace RMS_DALObjects
 				weightTables.Add(new WeightTableStruct(Convert.ToInt16(sqlDataRdr["DRGWgtIDSeqNum"]), sqlDataRdr["DRGWgtName"].ToString()));
 			}
 
-			base.closeConnection();
+			base.CloseConnection();
 
 			return weightTables;
 		}
@@ -163,27 +163,27 @@ namespace RMS_DALObjects
 			if (codeType.CodeCount==0)
 				// If no new codes, then delete any existing codes
 			{
-				SqlDataReader sqlDataRdr = base.getDataReader("SELECT * FROM RateCode WHERE RateTypeCode='" + codeType.CodeType + "' AND RateSeqNum=" + rateID);
+				SqlDataReader sqlDataRdr = base.GetDataReader("SELECT * FROM RateCode WHERE RateTypeCode='" + codeType.CodeType + "' AND RateSeqNum=" + rateID);
 
-				sqlParams = base.getParameters("DeleteRateCode");
+				sqlParams = base.GetParameters("DeleteRateCode");
 				while(sqlDataRdr.Read())
 				{
 					sqlParams[fld_RateCodeSeqNum].Value = sqlDataRdr["RateCodeSeqNum"];
 					sqlParams[fld_RateSeqNum].Value = sqlDataRdr["RateSeqNum"];
 					sqlParams[fld_RateSchedSeqNum].Value = sqlDataRdr["RateSchedSeqNum"];
 
-					base.executeDelete("DeleteRateCode", sqlParams);
+					base.ExecuteDelete("DeleteRateCode", sqlParams);
 				}
 
-				base.closeConnection();
+				base.CloseConnection();
 			}
 			else
 			{
 				ArrayList codesList = codeType.getCodesList();
 
-				SqlDataReader sqlDataRdr = base.getDataReader("SELECT * FROM RateCode WHERE RateTypeCode='" + codeType.CodeType + "' AND RateSeqNum=" + rateID);
+				SqlDataReader sqlDataRdr = base.GetDataReader("SELECT * FROM RateCode WHERE RateTypeCode='" + codeType.CodeType + "' AND RateSeqNum=" + rateID);
 
-				sqlParams = base.getParameters("DeleteRateCode");
+				sqlParams = base.GetParameters("DeleteRateCode");
 				while(sqlDataRdr.Read())
 				{
 					if (codesList.Contains(sqlDataRdr["RateCode"].ToString()))
@@ -198,13 +198,13 @@ namespace RMS_DALObjects
 						sqlParams[fld_RateSeqNum].Value = sqlDataRdr["RateSeqNum"];
 						sqlParams[fld_RateSchedSeqNum].Value = sqlDataRdr["RateSchedSeqNum"];
 
-						base.executeDelete("DeleteRateCode", sqlParams);
+						base.ExecuteDelete("DeleteRateCode", sqlParams);
 					}
 
 				}
-				base.closeConnection();
+				base.CloseConnection();
 
-				sqlParams = base.getParameters("UpdateRateCode");
+				sqlParams = base.GetParameters("UpdateRateCode");
 
 				for(int k=0; k<codesList.Count; k++)
 				{
@@ -215,7 +215,7 @@ namespace RMS_DALObjects
 					sqlParams[fld_RateCode].Value = codesList[k].ToString();
 					sqlParams[fld_RateTypeCode].Value = codeType.CodeType;
 
-					base.executeUpdate("UpdateRateCode", sqlParams);
+					base.ExecuteUpdate("UpdateRateCode", sqlParams);
 				}
 			}
 		}
@@ -223,12 +223,12 @@ namespace RMS_DALObjects
 
 		public void deleteRate(RateDataRow deleteRow)
 		{
-			SqlParameter[] sqlParams = base.getParameters("DeleteRateCodeAll");
+			SqlParameter[] sqlParams = base.GetParameters("DeleteRateCodeAll");
 
 			// RateSeqNum
 			sqlParams[fld_RateSeqNum].Value = deleteRow.RateID;
 
-			base.executeDelete("DeleteRateCodeAll", sqlParams);
+			base.ExecuteDelete("DeleteRateCodeAll", sqlParams);
 		}
 
 
@@ -236,22 +236,22 @@ namespace RMS_DALObjects
 		{
 			SqlParameter[] sqlParams;
 
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT * FROM RateCode WHERE RateTypeCode='Table' AND RateSeqNum=" + rate.ID);
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT * FROM RateCode WHERE RateTypeCode='Table' AND RateSeqNum=" + rate.ID);
 
-			sqlParams = base.getParameters("DeleteRateCode");
+			sqlParams = base.GetParameters("DeleteRateCode");
 			while(sqlDataRdr.Read())
 			{
 				sqlParams[fld_RateCodeSeqNum].Value = sqlDataRdr["RateCodeSeqNum"];
 				sqlParams[fld_RateSeqNum].Value = sqlDataRdr["RateSeqNum"];
 				sqlParams[fld_RateSchedSeqNum].Value = sqlDataRdr["RateSchedSeqNum"];
 
-				base.executeDelete("DeleteRateCode", sqlParams);
+				base.ExecuteDelete("DeleteRateCode", sqlParams);
 			}
 
-			base.closeConnection();
+			base.CloseConnection();
 
 
-			sqlParams = base.getParameters("UpdateRateCode");
+			sqlParams = base.GetParameters("UpdateRateCode");
 
 			sqlParams[fld_RateCodeSeqNum].Value = null;
       sqlParams[fld_RateSeqNum].Value = rate.ID;
@@ -260,7 +260,7 @@ namespace RMS_DALObjects
       sqlParams[fld_RateCode].Value = weightTable.TableID;
       sqlParams[fld_RateTypeCode].Value = "Table";
 
-      base.executeUpdate("UpdateRateCode", sqlParams);
+      base.ExecuteUpdate("UpdateRateCode", sqlParams);
 		}
 
 		#endregion

@@ -8,7 +8,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for statusTypeDAL.
 	/// </summary>
-	public class StatusDAL : baseDALObject
+	public class StatusDAL : BaseDALObject
 	{
 		public StatusDAL(){}
 
@@ -16,7 +16,7 @@ namespace RMS_DALObjects
 
 		public ArrayList getArrayOfStatusCodes()
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT StatusTypeCode FROM StatusType");
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT StatusTypeCode FROM StatusType");
 
 			ArrayList statusList = new ArrayList();
 
@@ -25,7 +25,7 @@ namespace RMS_DALObjects
 				statusList.Add(sqlDataRdr["StatusTypeCode"].ToString());
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return statusList;
 		}
@@ -34,7 +34,7 @@ namespace RMS_DALObjects
 
 		public DataTable getStatusTable()
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT StatusTypeCode, StatusTypeDescr FROM StatusType_View");
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT StatusTypeCode, StatusTypeDescr FROM StatusType_View");
 
 			DataTable tableToReturn = new DataTable();
 			tableToReturn.Columns.Add("StatusTypeCode", Type.GetType("System.String"));
@@ -51,14 +51,14 @@ namespace RMS_DALObjects
 				tableToReturn.Rows.Add(newRow);
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return tableToReturn;
 		}
 
 		public string getStatus(string statusTypeCode)
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT StatusTypeDescr FROM StatusType_View WHERE StatusTypeCode='" + statusTypeCode + "'");
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT StatusTypeDescr FROM StatusType_View WHERE StatusTypeCode='" + statusTypeCode + "'");
 
 			string statusToReturn;
 			if (sqlDataRdr.Read())
@@ -68,7 +68,7 @@ namespace RMS_DALObjects
 			else
 			{ statusToReturn = "";	}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return statusToReturn;
 		}

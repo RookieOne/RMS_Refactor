@@ -8,10 +8,28 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:baseDALObject.cs" caret="311" fromTop="13" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:AccessDALObject.cs" caret="197" fromTop="8" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:AnalysisDAL.cs" caret="232" fromTop="13" />
+      <File id="5858A6DA-C894-4E2D-98AB-49CA9E2A66BA/f:ImportData_Control.cs" caret="11491" fromTop="36" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:CodesDAL.cs" caret="4584" fromTop="11" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1265" fromTop="16" />
     </RecentFiles>
     <RecentEdits>
-      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:baseDALObject.cs" caret="311" fromTop="13" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1623" fromTop="13" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1623" fromTop="2" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1623" fromTop="9" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1623" fromTop="9" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1623" fromTop="10" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="50" fromTop="1" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="796" fromTop="15" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="837" fromTop="7" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1131" fromTop="18" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="1417" fromTop="18" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="153" fromTop="3" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="228" fromTop="6" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="646" fromTop="11" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="796" fromTop="16" />
+      <File id="C2E27776-E23E-4668-AAC8-4C466E4DD6F2/f:BaseDALObject.cs" caret="884" fromTop="15" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -24,4 +42,31 @@
     <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.2\bin\net-2.0\</NUnitInstallDir>
     <UseAddins>Never</UseAddins>
   </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="null" priority="1" />
+      <Item value="return" priority="3" />
+      <Item value="SqlConnection`0" priority="0" />
+      <Item value="new" priority="3" />
+      <Item value="SqlConnection" priority="0" />
+      <Item value="_connection" priority="2" />
+      <Item value="_connection_string" priority="1" />
+      <Item value="createConnection`0" priority="1" />
+      <Item value="var" priority="1" />
+      <Item value="SqlCommand`0" priority="0" />
+      <Item value="sql" priority="0" />
+      <Item value="DataSet`0" priority="1" />
+      <Item value="command" priority="0" />
+      <Item value="dataSet" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlDataAdapter">
+      <Item value="Fill`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlConnection">
+      <Item value="Open`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlCommand">
+      <Item value="ExecuteReader`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>

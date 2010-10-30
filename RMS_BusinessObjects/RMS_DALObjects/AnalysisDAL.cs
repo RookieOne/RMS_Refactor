@@ -8,7 +8,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for AnalysisDAL.
 	/// </summary>
-	public class AnalysisDAL : baseDALObject
+	public class AnalysisDAL : BaseDALObject
 	{
 		public AnalysisDAL()		{	}
 
@@ -32,7 +32,7 @@ namespace RMS_DALObjects
 
 			EncounterDataBO encData = new EncounterDataBO();
 
-			encData.Data = base.getDataSet(strSQL);
+			encData.Data = base.GetDataSet(strSQL);
 
 			return encData;
 		}

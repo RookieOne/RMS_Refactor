@@ -10,7 +10,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for PassThrusDAL.
 	/// </summary>
-	public class PassThrusDAL : baseDALObject
+	public class PassThrusDAL : BaseDALObject
 	{
 
 		#region "Variables"
@@ -46,19 +46,19 @@ namespace RMS_DALObjects
 		{
 			this.RateSchedulePassThrus = new RateSchedulePassThrusBO();
 
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT RateSeqNum, RateName FROM Rate WHERE RateCatgryDescr='PassThru' AND RateSchedSeqNum=" + rateScheduleID);
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT RateSeqNum, RateName FROM Rate WHERE RateCatgryDescr='PassThru' AND RateSchedSeqNum=" + rateScheduleID);
 
 			while(sqlDataRdr.Read())
 			{
 				this.RateSchedulePassThrus.addPassThru(Convert.ToInt32(sqlDataRdr["RateSeqNum"]), sqlDataRdr["RateName"].ToString());
 			}
 
-			base.closeConnection();
+			base.CloseConnection();
 		}
 
 		public PassThrusBO getPassThrus(int rateID)
 		{
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT RateCode FROM RateCode WHERE (RateTypeCode='PassThru') AND RateSeqNum=" + rateID);
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT RateCode FROM RateCode WHERE (RateTypeCode='PassThru') AND RateSeqNum=" + rateID);
 
 			PassThrusBO myPassThrus = new PassThrusBO(this.RateSchedulePassThrus);
 
@@ -76,7 +76,7 @@ namespace RMS_DALObjects
 				}	
 			}
 
-			base.closeConnection();
+			base.CloseConnection();
 
 			return myPassThrus;
 		}
@@ -111,9 +111,9 @@ namespace RMS_DALObjects
 				{	passThrusCodeList.Add(passThru.RateID.ToString());	}
 			}
 
-			DataSet oDataSet = base.getDataSet("SELECT * FROM RateCode WHERE RateTypeCode='PassThru' AND RateSeqNum=" + rate.ID);
+			DataSet oDataSet = base.GetDataSet("SELECT * FROM RateCode WHERE RateTypeCode='PassThru' AND RateSeqNum=" + rate.ID);
 
-			sqlParams = base.getParameters("DeleteRateCode");
+			sqlParams = base.GetParameters("DeleteRateCode");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -122,14 +122,14 @@ namespace RMS_DALObjects
 					sqlParams[0].Value = dRow["RateCodeSeqNum"];
 					sqlParams[1].Value = dRow["RateSeqNum"];
 					sqlParams[2].Value = dRow["RateSchedSeqNum"];
-					base.executeDelete("DeleteRateCode", sqlParams);
+					base.ExecuteDelete("DeleteRateCode", sqlParams);
 				}
 				else
 				{	passThrusCodeList.Remove(dRow["RateCode"].ToString());	}
 			}
 
 
-			sqlParams = base.getParameters("UpdateRateCode");
+			sqlParams = base.GetParameters("UpdateRateCode");
 
 			for(int k=0; k<passThrusCodeList.Count; k++)
 			{
@@ -145,7 +145,7 @@ namespace RMS_DALObjects
 						default : break;
 					}
 				}
-				base.executeUpdate("UpdateRateCode", sqlParams);
+				base.ExecuteUpdate("UpdateRateCode", sqlParams);
 			}
 		}
 

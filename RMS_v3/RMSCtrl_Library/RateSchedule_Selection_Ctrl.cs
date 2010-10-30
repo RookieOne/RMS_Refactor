@@ -29,7 +29,7 @@ namespace RMSCtrl_Library
 
 		#region "Variables"
 
-		baseDALObject data;
+		BaseDALObject data;
 
 		#endregion
 
@@ -40,9 +40,9 @@ namespace RMSCtrl_Library
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			data = new baseDALObject();
+			data = new BaseDALObject();
 
-      DataSet oDataSet = data.getDataSet("SELECT * FROM StatusType_View");
+      DataSet oDataSet = data.GetDataSet("SELECT * FROM StatusType_View");
 
       statusTypeComboBx.DisplayMember = "StatusTypeDescr";
       statusTypeComboBx.ValueMember = "StatusTypeCode";
@@ -57,7 +57,7 @@ namespace RMSCtrl_Library
 
 		private void setupContracts()
 		{
-			SqlDataReader sqlDataRdr = data.getDataReader("SELECT ContrctID.ContrctIDNum as ContrctIDNum, ContrctIDDescr FROM ContrctID, Contrct_RateSched, RateSched WHERE ContrctID.ContrctIDNum=Contrct_RateSched.ContrctIDNum AND Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND StatusTypeCode='" + statusTypeComboBx.SelectedValue + "' GROUP BY ContrctID.ContrctIDNum, ContrctIDDescr ORDER BY ContrctID.ContrctIDDescr ASC");
+			SqlDataReader sqlDataRdr = data.GetDataReader("SELECT ContrctID.ContrctIDNum as ContrctIDNum, ContrctIDDescr FROM ContrctID, Contrct_RateSched, RateSched WHERE ContrctID.ContrctIDNum=Contrct_RateSched.ContrctIDNum AND Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND StatusTypeCode='" + statusTypeComboBx.SelectedValue + "' GROUP BY ContrctID.ContrctIDNum, ContrctIDDescr ORDER BY ContrctID.ContrctIDDescr ASC");
 
 			contractComboBx.Items.Clear();
 			while(sqlDataRdr.Read())
@@ -66,7 +66,7 @@ namespace RMSCtrl_Library
 			}
 			contractComboBx.SelectedIndex=0;
 
-			data.closeConnection();	
+			data.CloseConnection();	
 		}
 
 		private void setupRateSchedules()
@@ -76,7 +76,7 @@ namespace RMSCtrl_Library
 			int length = selectedContract.Length - selectedContract.LastIndexOf("#") - 2;
 			string contractNum = selectedContract.Substring(begin, length).Trim();
 
-			SqlDataReader sqlDataRdr = data.getDataReader("SELECT RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM RateSched, Contrct_RateSched WHERE RateSched.RateSchedSeqNum=Contrct_RateSched.RateSchedSeqNum AND StatusTypeCode='" + statusTypeComboBx.SelectedValue + "' AND ContrctIDNum=" + contractNum + " ORDER BY RateSchedName ASC");
+			SqlDataReader sqlDataRdr = data.GetDataReader("SELECT RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM RateSched, Contrct_RateSched WHERE RateSched.RateSchedSeqNum=Contrct_RateSched.RateSchedSeqNum AND StatusTypeCode='" + statusTypeComboBx.SelectedValue + "' AND ContrctIDNum=" + contractNum + " ORDER BY RateSchedName ASC");
 
 			rateScheduleListBx.Items.Clear();
 			while(sqlDataRdr.Read())
@@ -85,7 +85,7 @@ namespace RMSCtrl_Library
 			}
 			rateScheduleListBx.SelectedIndex = 0;
 
-			data.closeConnection();
+			data.CloseConnection();
 		}
 
 

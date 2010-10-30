@@ -10,7 +10,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for contractDAL.
 	/// </summary>
-	public class ContractDAL : baseDALObject
+	public class ContractDAL : BaseDALObject
 	{
 		#region "Data Fields"
 
@@ -34,7 +34,7 @@ namespace RMS_DALObjects
 
 		public ContractBO getContract(int id)
 		{
-			SqlDataReader sqlDataRdr = this.getDataReader("SELECT ContrctIDNum, ContrctIDDescr FROM ContrctID WHERE ContrctIDNum=" + id);
+			SqlDataReader sqlDataRdr = this.GetDataReader("SELECT ContrctIDNum, ContrctIDDescr FROM ContrctID WHERE ContrctIDNum=" + id);
 
 			ContractBO contractToReturn;
 
@@ -46,14 +46,14 @@ namespace RMS_DALObjects
 			{	contractToReturn = new ContractBO();	}
 
 
-			sqlDataRdr = this.getDataReader("SELECT RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM Contrct_RateSched, RateSched WHERE Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND ContrctIDNum=" + id);
+			sqlDataRdr = this.GetDataReader("SELECT RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM Contrct_RateSched, RateSched WHERE Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND ContrctIDNum=" + id);
 
 			while(sqlDataRdr.Read())
 			{
 				contractToReturn.addRateSchedule(Convert.ToInt16(sqlDataRdr["RateSchedSeqNum"]), sqlDataRdr["RateSchedName"].ToString());
 			}
 
-			this.closeConnection();
+			this.CloseConnection();
 
 			return contractToReturn;
 		}
@@ -61,7 +61,7 @@ namespace RMS_DALObjects
 
 		public Contract_Collection getContractsByStatusType(string statusType)
 		{
-			SqlDataReader sqlDataRdr= this.getDataReader("SELECT ContrctID.ContrctIDNum as ContrctIDNum, ContrctID.ContrctIDDescr as ContrctIDDescr, RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM ContrctID, Contrct_RateSched, RateSched WHERE ContrctID.ContrctIDNum=Contrct_RateSched.ContrctIDNum AND Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND StatusTypeCode='" + statusType + "' GROUP BY ContrctID.ContrctIDNum, ContrctID.ContrctIDDescr, RateSched.RateSchedSeqNum, RateSchedName ORDER BY ContrctID.ContrctIDDescr ASC");
+			SqlDataReader sqlDataRdr= this.GetDataReader("SELECT ContrctID.ContrctIDNum as ContrctIDNum, ContrctID.ContrctIDDescr as ContrctIDDescr, RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM ContrctID, Contrct_RateSched, RateSched WHERE ContrctID.ContrctIDNum=Contrct_RateSched.ContrctIDNum AND Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND StatusTypeCode='" + statusType + "' GROUP BY ContrctID.ContrctIDNum, ContrctID.ContrctIDDescr, RateSched.RateSchedSeqNum, RateSchedName ORDER BY ContrctID.ContrctIDDescr ASC");
 			
 			Contract_Collection Contracts = new Contract_Collection();
 
@@ -86,14 +86,14 @@ namespace RMS_DALObjects
 				Contracts.addContract(newContract);
 			}
 			
-			this.closeConnection();
+			this.CloseConnection();
 
 			return Contracts;
 		}
 
 		public RateSchedule_Collection getRateSchedulesForContract(int contractID)
 		{
-			SqlDataReader sqlDataRdr= this.getDataReader("SELECT RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM RateSched, Contrct_RateSched WHERE Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND ContrctIDNum='" + contractID + "' ORDER BY RateSchedName ASC");
+			SqlDataReader sqlDataRdr= this.GetDataReader("SELECT RateSched.RateSchedSeqNum as RateSchedSeqNum, RateSchedName FROM RateSched, Contrct_RateSched WHERE Contrct_RateSched.RateSchedSeqNum=RateSched.RateSchedSeqNum AND ContrctIDNum='" + contractID + "' ORDER BY RateSchedName ASC");
 			
 			RateSchedule_Collection RateSchedules = new RateSchedule_Collection();
 			
@@ -102,7 +102,7 @@ namespace RMS_DALObjects
 				RateSchedules.addRateSchedule(new RateScheduleBO((int)sqlDataRdr["RateSchedSeqNum"], sqlDataRdr["RateSchedName"].ToString()));
 			}
 			
-			this.closeConnection();
+			this.CloseConnection();
 
 			return RateSchedules;
 
@@ -120,7 +120,7 @@ namespace RMS_DALObjects
 
 		public int updateContract(ContractBO contract)
 		{
-			SqlParameter[] sqlParams = base.getParameters("UpdateContrctID");
+			SqlParameter[] sqlParams = base.GetParameters("UpdateContrctID");
 
 			if (contract.ID==0)
 			{
@@ -133,7 +133,7 @@ namespace RMS_DALObjects
 
 			sqlParams[fld_ContrctIDDescr].Value = contract.ContractName;
 
-			base.executeUpdate("UpdateContrctID", sqlParams);
+			base.ExecuteUpdate("UpdateContrctID", sqlParams);
 
 			return Convert.ToInt16(sqlParams[fld_ContrctIDNum].Value);
 		}
@@ -142,7 +142,7 @@ namespace RMS_DALObjects
 		{
 			SqlParameter[] sqlParams;
 
-			sqlParams = base.getParameters("DeleteContrct_RateSched");
+			sqlParams = base.GetParameters("DeleteContrct_RateSched");
 
 			RateScheduleDAL rateScheduleData = new RateScheduleDAL();
 
@@ -151,16 +151,16 @@ namespace RMS_DALObjects
 				sqlParams[fld_Contrct_RateSched_ContrctIDNum].Value = contract.ID;
 				sqlParams[fld_Contrct_RateSched_RateSchedSeqNum].Value = ((RateScheduleStruct) contract.getRateScheduleAt(k)).ID;
 
-				base.executeDelete("DeleteContrct_RateSched", sqlParams);
+				base.ExecuteDelete("DeleteContrct_RateSched", sqlParams);
 
 				rateScheduleData.deleteRateSchedule(((RateScheduleStruct) contract.getRateScheduleAt(k)).ID);	
 			}
 
-			sqlParams = base.getParameters("DeleteContrctID");
+			sqlParams = base.GetParameters("DeleteContrctID");
 
       sqlParams[fld_ContrctIDNum].Value = contract.ID;
 
-			base.executeDelete("DeleteContrctID", sqlParams);
+			base.ExecuteDelete("DeleteContrctID", sqlParams);
 		}
 
 		#endregion

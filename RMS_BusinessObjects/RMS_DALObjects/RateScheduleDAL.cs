@@ -9,7 +9,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for RateScheduleDAL.
 	/// </summary>
-	public class RateScheduleDAL : baseDALObject
+	public class RateScheduleDAL : BaseDALObject
 	{
 
 		#region "Data Fields"
@@ -35,7 +35,7 @@ namespace RMS_DALObjects
 		{
 			// Fill out Rate Schedule info
 
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT * FROM RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT * FROM RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
 
 			RateScheduleBO rateSchedule = new RateScheduleBO();
 
@@ -66,7 +66,7 @@ namespace RMS_DALObjects
 		{
 			// Fill out Rate Collection
 
-			DataSet oDataSet = base.getDataSet("SELECT * FROM Rate WHERE RateSchedSeqNum=" + rateScheduleID);
+			DataSet oDataSet = base.GetDataSet("SELECT * FROM Rate WHERE RateSchedSeqNum=" + rateScheduleID);
 
 			Rate_Collection Rates = new Rate_Collection();
 			RateDAL rateData = new RateDAL(ref codesMngr, rateScheduleID);
@@ -143,7 +143,7 @@ namespace RMS_DALObjects
 
 		public int updateRateSchedule(RateScheduleBO rateSchedule)
 		{
-			SqlParameter[] sqlParams = base.getParameters("UpdateRateSched");
+			SqlParameter[] sqlParams = base.GetParameters("UpdateRateSched");
 
 			if (rateSchedule.ID==0)
 			{	sqlParams[fld_RateSchedSeqNum].Value = 0;	}
@@ -156,16 +156,16 @@ namespace RMS_DALObjects
 			sqlParams[fld_RateSchedName].Value = rateSchedule.RateScheduleName;
 			sqlParams[fld_StatusTypeCode].Value = rateSchedule.Status;
 
-			base.executeUpdate("UpdateRateSched", sqlParams);
+			base.ExecuteUpdate("UpdateRateSched", sqlParams);
 
 			rateSchedule.ID = Convert.ToInt16(sqlParams[fld_RateSchedSeqNum].Value);
       
-			sqlParams = base.getParameters("UpdateContrct_RateSched");
+			sqlParams = base.GetParameters("UpdateContrct_RateSched");
 
 			sqlParams[fld_Contrct_RateSched_ContrctIDNum].Value = rateSchedule.ContractID;
 			sqlParams[fld_Contrct_RateSched_RateSchedSeqNum].Value = rateSchedule.ID;
 
-			base.executeUpdate("UpdateContrct_RateSched", sqlParams);
+			base.ExecuteUpdate("UpdateContrct_RateSched", sqlParams);
 			
 			return rateSchedule.ID;
 		}
@@ -179,28 +179,28 @@ namespace RMS_DALObjects
 		{
 			SqlParameter[] sqlParams;
 
-			SqlDataReader sqlDataRdr = base.getDataReader("SELECT * FROM Contrct_RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
+			SqlDataReader sqlDataRdr = base.GetDataReader("SELECT * FROM Contrct_RateSched WHERE RateSchedSeqNum=" + rateScheduleID);
 
-			sqlParams = base.getParameters("DeleteContrct_RateSched");
+			sqlParams = base.GetParameters("DeleteContrct_RateSched");
 
 			while (sqlDataRdr.Read())
 			{
 				sqlParams[0].Value = sqlDataRdr["ContrctIDNum"];
 				sqlParams[1].Value = rateScheduleID;
-				base.executeDelete("DeleteContrct_RateSched", sqlParams);
+				base.ExecuteDelete("DeleteContrct_RateSched", sqlParams);
 			}
 
 
-			sqlParams = base.getParameters("DeleteRateAll");
+			sqlParams = base.GetParameters("DeleteRateAll");
 			sqlParams[0].Value = rateScheduleID;
-			base.executeDelete("DeleteRateAll", sqlParams);
+			base.ExecuteDelete("DeleteRateAll", sqlParams);
 
 			CoverageDAL coverageData = new CoverageDAL();
 			coverageData.deleteCoverage(rateScheduleID);
 
-			sqlParams = base.getParameters("DeleteRateSched");
+			sqlParams = base.GetParameters("DeleteRateSched");
 			sqlParams[0].Value = rateScheduleID;
-			base.executeDelete("DeleteRateSched", sqlParams);
+			base.ExecuteDelete("DeleteRateSched", sqlParams);
 		}
 
 

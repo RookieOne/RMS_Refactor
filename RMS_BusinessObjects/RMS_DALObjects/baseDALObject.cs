@@ -1,104 +1,54 @@
-using System;
 using System.Data;
 using System.Data.SqlClient;
-//using Microsoft.ApplicationBlocks.Data;
 
 namespace RMS_DALObjects
 {
-	/// <summary>
-	/// Summary description for Class1.
-	/// </summary>
-	public class baseDALObject
-	{
-		#region "Variables"
+    public class BaseDALObject
+    {
+        SqlConnection _connection;
+        string _connection_string = "connection_string";
 
-		private string strConn = "connection_string";
-		private SqlConnection sqlConn;
+        void createConnection()
+        {
+            _connection = new SqlConnection(_connection_string);
+        }
 
-		#endregion
+        public DataSet GetDataSet(string sql)
+        {
+            createConnection();
+            var dataSet = new DataSet();
+            new SqlDataAdapter(sql, _connection).Fill(dataSet);
+            
+            return dataSet;
+        }
 
-		#region "Constructors"
+        public SqlDataReader GetDataReader(string sql)
+        {
+            createConnection();
+            _connection.Open();
 
-		public baseDALObject(){}
+            return new SqlCommand(sql, _connection).ExecuteReader();
+        }
 
-		#endregion
+        public void CloseConnection()
+        {
+            _connection.Close();
+        }
 
-		#region "Methods"
-
-		public DataSet getDataSet(string strSQL)
-		{
-			try
-			{
-			    return null;
-			    //return SqlHelper.ExecuteDataset(strConn, CommandType.Text, strSQL);
-			}
-			catch (SqlException e)
-			{
-				string msg = e.Message;
-				return null;	
-			}
-		}
-
-		public SqlDataReader getDataReader(string strSQL)
-		{
-			try
-			{
-				sqlConn = new SqlConnection(strConn);
-				sqlConn.Open();
-
-				SqlCommand sqlCmd = new SqlCommand(strSQL, sqlConn);
-
-				return sqlCmd.ExecuteReader();
-			}
-			catch (SqlException e)
-			{
-				string msg = e.Message;
-				return null;	
-			}
-		}
-
-		public void closeConnection()
-		{
-			try
-			{
-				sqlConn.Close();
-			}
-			catch (SqlException e)
-			{
-				string msg = e.Message;
-			}
-		}
-
-
-
-
-		public SqlParameter[] getParameters(string storedProcedureName)
-		{
+        public SqlParameter[] GetParameters(string storedProcedureName)
+        {
             return null; //SqlHelperParameterCache.GetSpParameterSet(strConn, storedProcedureName);	
-           }
+        }
 
-		public void executeUpdate(string storedProcedureName, SqlParameter[] sqlParams)
-		{
-			try
-			{
-				sqlParams[sqlParams.Length-3].Value = "RMS";
-				//SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
-			}
-			catch (SqlException e)
-			{	string msg = e.Message;	}
-		}
+        public void ExecuteUpdate(string storedProcedureName, SqlParameter[] sqlParams)
+        {
+            sqlParams[sqlParams.Length - 3].Value = "RMS";
+            //SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
+        }
 
-		public void executeDelete(string storedProcedureName, SqlParameter[] sqlParams)
-		{
-			try
-			{
-				//SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
-			}
-			catch(SqlException e)
-			{	string msg = e.Message;	}
-		}
-
-		#endregion
-
-	}
+        public void ExecuteDelete(string storedProcedureName, SqlParameter[] sqlParams)
+        {
+            //SqlHelper.ExecuteNonQuery(strConn, CommandType.StoredProcedure, storedProcedureName, sqlParams);
+        }
+    }
 }

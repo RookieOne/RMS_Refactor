@@ -43,7 +43,7 @@ namespace RMS_v3
 
 		#region "Variables"
 
-		baseDALObject data = new baseDALObject();
+		BaseDALObject data = new BaseDALObject();
 		internal System.Windows.Forms.ListBox datasetBx;
 		AccessDALObject accessData = new AccessDALObject();
 
@@ -69,7 +69,7 @@ namespace RMS_v3
 
 		private void updateDatasetBx()
 		{
-			DataSet oDataSet = data.getDataSet("SELECT * FROM Dataset ORDER BY DatasetName ASC");
+			DataSet oDataSet = data.GetDataSet("SELECT * FROM Dataset ORDER BY DatasetName ASC");
 			
 			datasetBx.DisplayMember = "DatasetName";
 			datasetBx.ValueMember = "DatasetSeqNum";
@@ -396,9 +396,9 @@ namespace RMS_v3
       deleteTable("Detl", dataSetID);
       deleteTable("Encntr", dataSetID);
 
-			SqlParameter[] sqlParams = data.getParameters("DeleteDataset");
+			SqlParameter[] sqlParams = data.GetParameters("DeleteDataset");
 			sqlParams[0].Value = dataSetID;
-			data.executeDelete("DeleteDataset", sqlParams);
+			data.ExecuteDelete("DeleteDataset", sqlParams);
 
       tableLbl.Text = "";
       tableLbl.Refresh();
@@ -443,20 +443,20 @@ namespace RMS_v3
 			{
 				case "Encntr" :
 
-					oDataSet = data.getDataSet("SELECT * FROM Encntr WHERE DatasetSeqNum=" + datasetID);
+					oDataSet = data.GetDataSet("SELECT * FROM Encntr WHERE DatasetSeqNum=" + datasetID);
           
 					if (oDataSet.Tables[0].Rows.Count>0)
 					{
 						setupProgBar(oDataSet.Tables[0].Rows.Count);
 
 						tableLbl.Text = "Delete from Encntr";
-						sqlParams = data.getParameters("DeleteEncntr");
+						sqlParams = data.GetParameters("DeleteEncntr");
 
 						foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 						{
 							sqlParams[0].Value = dRow["EncntrNum"];
 							sqlParams[1].Value = dRow["DataSetSeqNum"];
-							data.executeDelete("DeleteEncntr", sqlParams);
+							data.ExecuteDelete("DeleteEncntr", sqlParams);
 
 							count += 1;
 							barcount += 1;
@@ -474,14 +474,14 @@ namespace RMS_v3
 
 				case "Detl" :
 
-					oDataSet = data.getDataSet("SELECT * FROM Detl WHERE DatasetSeqNum=" + datasetID);
+					oDataSet = data.GetDataSet("SELECT * FROM Detl WHERE DatasetSeqNum=" + datasetID);
 
 					if (oDataSet.Tables[0].Rows.Count>0)
 					{
 						setupProgBar(oDataSet.Tables[0].Rows.Count);
 
 						tableLbl.Text = "Delete from Detl";
-						sqlParams = data.getParameters("DeleteDetl");
+						sqlParams = data.GetParameters("DeleteDetl");
 
 						foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 						{
@@ -489,7 +489,7 @@ namespace RMS_v3
 							sqlParams[1].Value = dRow["DataSetSeqNum"];
 							sqlParams[2].Value = dRow["DetlSeqNum"];
 
-							data.executeDelete("DeleteDetl", sqlParams);
+							data.ExecuteDelete("DeleteDetl", sqlParams);
 
 							count += 1;
 							barcount += 1;
@@ -507,14 +507,14 @@ namespace RMS_v3
 
 				case "EncntrCPT" :
           
-					oDataSet = data.getDataSet("SELECT * FROM EncntrCPT WHERE DatasetSeqNum=" + datasetID);
+					oDataSet = data.GetDataSet("SELECT * FROM EncntrCPT WHERE DatasetSeqNum=" + datasetID);
 
 					if (oDataSet.Tables[0].Rows.Count>0)
 					{
 						setupProgBar(oDataSet.Tables[0].Rows.Count);
 
 						tableLbl.Text = "Delete from EncCpt";
-						sqlParams = data.getParameters("DeleteEncntrCPT");
+						sqlParams = data.GetParameters("DeleteEncntrCPT");
 
 						foreach(DataRow drow in oDataSet.Tables[0].Rows)
 						{
@@ -522,7 +522,7 @@ namespace RMS_v3
 							sqlParams[1].Value = drow["Datasetseqnum"];
 							sqlParams[2].Value = drow["EncntrCPTSeqNum"];
 
-							data.executeDelete("DeleteEncntrCPT", sqlParams);
+							data.ExecuteDelete("DeleteEncntrCPT", sqlParams);
 
 							count += 1;
 							barcount += 1;
@@ -624,9 +624,9 @@ namespace RMS_v3
 
 			// ***** Pull Dataset information and update entry
 
-			oDataSet = data.getDataSet("SELECT * FROM Dataset WHERE DatasetSeqNum=" + datasetID);
+			oDataSet = data.GetDataSet("SELECT * FROM Dataset WHERE DatasetSeqNum=" + datasetID);
 
-			SqlParameter[] sqlParams = data.getParameters("UpdateDataset");
+			SqlParameter[] sqlParams = data.GetParameters("UpdateDataset");
 
 			foreach(SqlParameter sqlParam in sqlParams)
 			{
@@ -640,7 +640,7 @@ namespace RMS_v3
 					default : break;
 				}
 			}
-			data.executeUpdate("UpdateDataset", sqlParams);
+			data.ExecuteUpdate("UpdateDataset", sqlParams);
 
 
 			// ***** Update Encounter
@@ -648,7 +648,7 @@ namespace RMS_v3
 			oDataSet = accessData.getDataSet("SELECT * FROM [" + accessTableName + "]");
 			setupProgBar(oDataSet.Tables[0].Rows.Count);
 
-			sqlParams = data.getParameters("UpdateEncntr");
+			sqlParams = data.GetParameters("UpdateEncntr");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -666,7 +666,7 @@ namespace RMS_v3
 				sqlParams[fld_Encntr_PrincplDiagCode].Value = dRow["PrincipalDiag"];
 				sqlParams[fld_Encntr_PrincplProcdrCode].Value = dRow["PrincipalProc"];
 
-				data.executeUpdate("UpdateEncntr", sqlParams);
+				data.ExecuteUpdate("UpdateEncntr", sqlParams);
 
 				count = count + 1;
 				barCount = barCount + 1;
@@ -704,7 +704,7 @@ namespace RMS_v3
 
 			setupProgBar(oDataSet.Tables[0].Rows.Count);
 
-			SqlParameter[] sqlParams = data.getParameters("UpdateDetl");
+			SqlParameter[] sqlParams = data.GetParameters("UpdateDetl");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -716,7 +716,7 @@ namespace RMS_v3
 				sqlParams[fld_Detl_Quantity].Value = dRow["Quantity"];
 				sqlParams[fld_Detl_RevCode].Value = dRow["RevCode"];
 
-				data.executeUpdate("UpdateDetl", sqlParams);
+				data.ExecuteUpdate("UpdateDetl", sqlParams);
 
 				count += 1;
 				barCount += 1;
@@ -750,7 +750,7 @@ namespace RMS_v3
 
 			setupProgBar(oDataSet.Tables[0].Rows.Count);
 
-			SqlParameter[] sqlParams = data.getParameters("UpdateEncntrCpt");
+			SqlParameter[] sqlParams = data.GetParameters("UpdateEncntrCpt");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -760,7 +760,7 @@ namespace RMS_v3
 				sqlParams[fld_EncntrCpt_CPT].Value = dRow["CPT"];
 				sqlParams[fld_EncntrCpt_CPT_Sequence].Value = dRow["CPT_Sequence"];
 
-				data.executeUpdate("UpdateEncntrCpt", sqlParams);
+				data.ExecuteUpdate("UpdateEncntrCpt", sqlParams);
 
 				count += 1;
 				barCount += 1;

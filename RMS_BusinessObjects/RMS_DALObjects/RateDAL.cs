@@ -10,7 +10,7 @@ namespace RMS_DALObjects
 	/// <summary>
 	/// Summary description for RateDAL.
 	/// </summary>
-	public class RateDAL : baseDALObject
+	public class RateDAL : BaseDALObject
 	{
 		#region "Variables"
 
@@ -71,7 +71,7 @@ namespace RMS_DALObjects
 
 		public RateBO getRate(int RateID)
 		{
-			DataSet oDataSet = base.getDataSet("SELECT * FROM Rate WHERE RateSeqNum=" + RateID);
+			DataSet oDataSet = base.GetDataSet("SELECT * FROM Rate WHERE RateSeqNum=" + RateID);
 
 			if (oDataSet.Tables[0].Rows.Count>0)
 			{
@@ -294,7 +294,7 @@ namespace RMS_DALObjects
 
 		public int updateRate(RateBO rate)
 		{
-			SqlParameter[] sqlParams = base.getParameters("UpdateRate");
+			SqlParameter[] sqlParams = base.GetParameters("UpdateRate");
 
 			RateDataRow inputRow = rate.getRateAsRateDataRow();
 			// RateSeqNum
@@ -330,7 +330,7 @@ namespace RMS_DALObjects
 			// Threshold
 			sqlParams[fld_ThreshldNum].Value = inputRow.Threshold;
 
-			base.executeUpdate("UpdateRate", sqlParams);
+			base.ExecuteUpdate("UpdateRate", sqlParams);
 
 			int rateID = Convert.ToInt16(sqlParams[fld_RateSeqNum].Value);
 
@@ -359,12 +359,12 @@ namespace RMS_DALObjects
 
 		public void deleteRate(RateBO rate)
 		{
-			SqlParameter[] sqlParams = base.getParameters("DeleteRateCodeAll");
+			SqlParameter[] sqlParams = base.GetParameters("DeleteRateCodeAll");
 
 			// RateSeqNum
 			sqlParams[fld_RateSeqNum].Value = rate.ID;
 
-			base.executeDelete("DeleteRateCodeAll", sqlParams);
+			base.ExecuteDelete("DeleteRateCodeAll", sqlParams);
 		}
 
 		#endregion

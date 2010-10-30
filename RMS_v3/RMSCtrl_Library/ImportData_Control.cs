@@ -34,7 +34,7 @@ namespace RMSCtrl_Library
 		string var_DestinationTableName;
 
 		AccessDALObject accessData = new AccessDALObject();
-		baseDALObject data = new baseDALObject();
+		BaseDALObject data = new BaseDALObject();
 
 		Panel destinationPanel, sourcePanel;
 		RMS_ProgressBar progBar;
@@ -97,7 +97,7 @@ namespace RMSCtrl_Library
 
 		private void loadDestinationFields()
 		{
-			DataSet oDataSet = data.getDataSet("SELECT * FROM [" + this.DestinationTableName + "]");
+			DataSet oDataSet = data.GetDataSet("SELECT * FROM [" + this.DestinationTableName + "]");
 
 			destinationFieldsList = new ArrayList();
 
@@ -353,9 +353,9 @@ namespace RMSCtrl_Library
 
 			if (replaceChkBx.Checked)
 			{
-				sqlParams = data.getParameters("Delete" + this.DestinationTableName);
+				sqlParams = data.GetParameters("Delete" + this.DestinationTableName);
 			
-				oDataSet = data.getDataSet("SELECT * FROM [" + this.DestinationTableName + "]");
+				oDataSet = data.GetDataSet("SELECT * FROM [" + this.DestinationTableName + "]");
 
 				progBar.Title = "Deleting " + this.DestinationTableName;
 				progBar.Max = oDataSet.Tables[0].Rows.Count;
@@ -369,7 +369,7 @@ namespace RMSCtrl_Library
 					{
 						sqlParams[k].Value = dRow[k];
 					}
-					data.executeDelete("Delete" + this.DestinationTableName, sqlParams);
+					data.ExecuteDelete("Delete" + this.DestinationTableName, sqlParams);
 				}
 
 				progBar.Finished();
@@ -377,7 +377,7 @@ namespace RMSCtrl_Library
 
 
 
-			sqlParams = data.getParameters("Update" + this.DestinationTableName);
+			sqlParams = data.GetParameters("Update" + this.DestinationTableName);
 
 			string accessTableName = "";
 			accessTableName = ((DataRowView)accessTable.Items[accessTable.SelectedIndex])[2].ToString();
@@ -402,7 +402,7 @@ namespace RMSCtrl_Library
 					{	sqlParam.Value = null;		}
 				}
 
-				data.executeUpdate("Update" + this.DestinationTableName, sqlParams);
+				data.ExecuteUpdate("Update" + this.DestinationTableName, sqlParams);
 			}
 
 			progBar.Finished();

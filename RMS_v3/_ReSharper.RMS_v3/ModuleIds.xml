@@ -3,4 +3,11 @@
   <Module PersistentId="C2E27776-E23E-4668-AAC8-4C466E4DD6F2" ModuleId="RMS_DALObjects" />
   <Module PersistentId="63933E44-35A8-4160-AF6D-48BFB0E3AEFD" ModuleId="VB_ExcelReport_Library" />
   <Module PersistentId="58FABAE3-D885-4A76-945D-887F8E878D7D" ModuleId="RMS_BusinessObjects" />
+  <Module PersistentId="3B683926-FA20-4C6B-A3DE-A6BD1B4D1851" ModuleId="RMS_DALObjects.Test" />
+  <Module PersistentId="5858A6DA-C894-4E2D-98AB-49CA9E2A66BA" ModuleId="RMSCtrl_Library" />
+  <Module PersistentId="57C0C65C-870E-45F8-8AD0-644CB4E1815C" ModuleId="RMS v3" />
+  <Module PersistentId="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="mscorlib_1" />
+  <Module PersistentId="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System" />
+  <Module PersistentId="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Drawing" />
+  <Module PersistentId="4CAF5083-0A88-408E-B20C-E3C60CCFEF37" ModuleId="EditRate_Library" />
 </Modules>

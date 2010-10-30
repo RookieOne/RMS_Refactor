@@ -24,7 +24,7 @@ namespace RMS_v3
 
 		#region "Variables"
 
-		baseDALObject data = new baseDALObject();
+		BaseDALObject data = new BaseDALObject();
 
 		public event EventHandler NewDataSet;
 
@@ -110,14 +110,14 @@ namespace RMS_v3
 
 		private void setBtn_Click(object sender, System.EventArgs e)
 		{
-			SqlParameter[] sqlParams = data.getParameters("UpdateDataset");
+			SqlParameter[] sqlParams = data.GetParameters("UpdateDataset");
 
 			sqlParams[1].Value = datasetNameBx.Text;	// DatasetName
 			sqlParams[2].Value = DateTime.Today; // Pulled Date
 			sqlParams[3].Value = DateTime.Today; // Start Date
 			sqlParams[4].Value = DateTime.Today; // End Date
 
-			data.executeUpdate("UpdateDataset", sqlParams);
+			data.ExecuteUpdate("UpdateDataset", sqlParams);
 
 			NewDataSet(this, EventArgs.Empty);
 		}

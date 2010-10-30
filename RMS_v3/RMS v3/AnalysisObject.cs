@@ -30,7 +30,7 @@ namespace RMS_v3
 
 		int los, rateSchedSeqNum, datasetSeqNum;
 
-		baseDALObject db = new baseDALObject();
+		BaseDALObject db = new BaseDALObject();
 
 		double chargeInc, inChrgInc, outChrgInc, costInc;
 		double medRate, surgRate;
@@ -227,7 +227,7 @@ namespace RMS_v3
 
 			if (filterHospitals)
 			{
-				oDataSet = db.getDataSet("SELECT * FROM Entity_RateSched, Entity WHERE Entity_RateSched.EntityCode=Entity.EntityCode AND RateSchedSeqNum=" + rateSchedSeqNum);
+				oDataSet = db.GetDataSet("SELECT * FROM Entity_RateSched, Entity WHERE Entity_RateSched.EntityCode=Entity.EntityCode AND RateSchedSeqNum=" + rateSchedSeqNum);
 
 				if (oDataSet.Tables[0].Rows.Count == 0)
 				{	filterHospitals = false;	}
@@ -247,7 +247,7 @@ namespace RMS_v3
 
 			if (filterInsPlans)
 			{
-				oDataSet = db.getDataSet("SELECT * FROM InsurncPlanCode WHERE RateSchedSeqNum=" + rateSchedSeqNum);
+				oDataSet = db.GetDataSet("SELECT * FROM InsurncPlanCode WHERE RateSchedSeqNum=" + rateSchedSeqNum);
 
 				if (oDataSet.Tables[0].Rows.Count == 0)
 				{	filterInsPlans = false;	}
@@ -265,7 +265,7 @@ namespace RMS_v3
 				}
 			}
 
-			oDataSet = db.getDataSet(strSQL);
+			oDataSet = db.GetDataSet(strSQL);
 
 			dTable = new DataTable();
 			dTable = oDataSet.Tables[0].Copy();
@@ -292,7 +292,7 @@ namespace RMS_v3
 			if (filterInsPlans)
 			{	strSQL += " AND Encntr.InsurncPlanCode In (" + IPCFilter + ")";}
 
-			oDataSet = db.getDataSet(strSQL);
+			oDataSet = db.GetDataSet(strSQL);
 
 			dTable = new DataTable();
 			dTable = oDataSet.Tables[0].Copy();
@@ -314,7 +314,7 @@ namespace RMS_v3
 			if (filterInsPlans)
 			{	strSQL += " AND Encntr.InsurncPlanCode In (" + IPCFilter + ")";}
 
-			oDataSet = db.getDataSet(strSQL);
+			oDataSet = db.GetDataSet(strSQL);
 
 			dTable = new DataTable();
 			dTable = oDataSet.Tables[0].Copy();
@@ -327,12 +327,12 @@ namespace RMS_v3
 			progBar.Refresh();
 
 			// Load DRG Info Table
-			drgDS = db.getDataSet("SELECT * FROM DRGRate");
+			drgDS = db.GetDataSet("SELECT * FROM DRGRate");
 			key[0] = drgDS.Tables[0].Columns["DRGRateCode"];
 			drgDS.Tables[0].PrimaryKey = key;
 
 			// Load DRG Type Table
-			drgTypeDS = db.getDataSet("SELECT * FROM DRGType WHERE DRGTypeGrpNum=1");
+			drgTypeDS = db.GetDataSet("SELECT * FROM DRGType WHERE DRGTypeGrpNum=1");
 			key[0] = drgTypeDS.Tables[0].Columns["DRGTypeCode"];
 			drgTypeDS.Tables[0].PrimaryKey = key;
 		}
@@ -343,15 +343,15 @@ namespace RMS_v3
 			DataColumn[] key = new DataColumn[1];
 
 			// Load Rates DataSet
-			ratesDS = db.getDataSet("SELECT * FROM Rate WHERE RateSchedSeqNum=" + rateSchedSeqNum);
+			ratesDS = db.GetDataSet("SELECT * FROM Rate WHERE RateSchedSeqNum=" + rateSchedSeqNum);
 			key[0] = ratesDS.Tables[0].Columns["RateSeqNum"];
 			ratesDS.Tables[0].PrimaryKey = key;
 
 			// Load Codes DataSet
-			codesDS = db.getDataSet("SELECT Rate.RateSeqNum as RateSeqNum, InOutPatientInd, LOSNum, RateCatgryDescr, RateTypeCode, RateCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND Not RateTypeCode='PassThru' AND Not RateCatgryDescr IN (" + constLimitCategories + ") AND NOT (RateCode.RateCode='General') AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
+			codesDS = db.GetDataSet("SELECT Rate.RateSeqNum as RateSeqNum, InOutPatientInd, LOSNum, RateCatgryDescr, RateTypeCode, RateCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND Not RateTypeCode='PassThru' AND Not RateCatgryDescr IN (" + constLimitCategories + ") AND NOT (RateCode.RateCode='General') AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
 
 			// Load Limits Codes Dataset
-			limitCodesDS = db.getDataSet("SELECT Rate.RateSeqNum as RateSeqNum, InOutPatientInd, RateCatgryDescr, RateTypeCode, RateCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND Not RateTypeCode='PassThru' AND RateCatgryDescr IN (" + constLimitCategories + ") AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
+			limitCodesDS = db.GetDataSet("SELECT Rate.RateSeqNum as RateSeqNum, InOutPatientInd, RateCatgryDescr, RateTypeCode, RateCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND Not RateTypeCode='PassThru' AND RateCatgryDescr IN (" + constLimitCategories + ") AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
 
 			// Load General Hash Table
 			genHashTable = new Hashtable();
@@ -361,7 +361,7 @@ namespace RMS_v3
 
 			string inOut, rateCat;
 			
-			oDataSet = db.getDataSet("SELECT Rate.RateSeqNum as RateSeqNum, InOutPatientInd, RateCatgryDescr FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND RateCode='General' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
+			oDataSet = db.GetDataSet("SELECT Rate.RateSeqNum as RateSeqNum, InOutPatientInd, RateCatgryDescr FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND RateCode='General' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -382,10 +382,10 @@ namespace RMS_v3
 			ascTable.Columns.Add("Group", Type.GetType("System.String"));
 
 			// Load PassThrus Dataset
-			passThruDS = db.getDataSet("SELECT * FROM RateCode WHERE RateTypeCode='PassThru' AND RateSchedSeqNum=" + rateSchedSeqNum);
+			passThruDS = db.GetDataSet("SELECT * FROM RateCode WHERE RateTypeCode='PassThru' AND RateSchedSeqNum=" + rateSchedSeqNum);
 
 			// Get Medical and Surgical
-			oDataSet = db.getDataSet("SELECT * FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " AND (RateCode='Medical' OR RateCode='Surgical')");
+			oDataSet = db.GetDataSet("SELECT * FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " AND (RateCode='Medical' OR RateCode='Surgical')");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -792,7 +792,7 @@ namespace RMS_v3
 			in_HasPerDiem.Add("DRG", false);
 			in_HasPerDiem.Add("RevCode", false);
 
-			oDataSet = db.getDataSet("SELECT RateTypeCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND InOutPatientInd='I' AND RateCatgryDescr='PerDiem' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " GROUP BY RateTypeCode");
+			oDataSet = db.GetDataSet("SELECT RateTypeCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND InOutPatientInd='I' AND RateCatgryDescr='PerDiem' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " GROUP BY RateTypeCode");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -806,7 +806,7 @@ namespace RMS_v3
 			in_HasFFS.Add("ICD9", false);
 			in_HasFFS.Add("ICD9D", false);
 
-			oDataSet = db.getDataSet("SELECT RateTypeCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND InOutPatientInd='I' AND RateCatgryDescr='FFS' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " GROUP BY RateTypeCode");
+			oDataSet = db.GetDataSet("SELECT RateTypeCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND InOutPatientInd='I' AND RateCatgryDescr='FFS' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " GROUP BY RateTypeCode");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -959,14 +959,14 @@ namespace RMS_v3
 			// Find out which Wgt Table to use
 			string drgWgtID;
 		
-			oDataSet = db.getDataSet("SELECT * FROM RateCode WHERE RateSchedSeqNum=" + rateSchedSeqNum + " AND RateSeqNum=" + rateSeqNum + " AND RateTypeCode='Table'");
+			oDataSet = db.GetDataSet("SELECT * FROM RateCode WHERE RateSchedSeqNum=" + rateSchedSeqNum + " AND RateSeqNum=" + rateSeqNum + " AND RateTypeCode='Table'");
 
 			if (oDataSet.Tables[0].Rows.Count > 0)
 			{	drgWgtID = oDataSet.Tables[0].Rows[0]["RateCode"].ToString();	}
 			else
 			{	drgWgtID = "1";	}
 
-			oDataSet = db.getDataSet("SELECT * FROM DRGWgt WHERE DRGWgtIDSeqNum=" + drgWgtID + " AND DRGCode='" + eRow["DRG"] + "'");
+			oDataSet = db.GetDataSet("SELECT * FROM DRGWgt WHERE DRGWgtIDSeqNum=" + drgWgtID + " AND DRGCode='" + eRow["DRG"] + "'");
 
 			if (oDataSet.Tables[0].Rows.Count > 0)
 			{	
@@ -1108,7 +1108,7 @@ namespace RMS_v3
 			out_HasFFSCodeTypes.Add("ICD9", false);
 			out_HasFFS = false;
 
-			oDataSet = db.getDataSet("SELECT RateTypeCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND InOutPatientInd='O' AND RateCatgryDescr='FFS' AND NOT (RateCode.RateCode='General') AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " GROUP BY RateTypeCode");
+			oDataSet = db.GetDataSet("SELECT RateTypeCode FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND InOutPatientInd='O' AND RateCatgryDescr='FFS' AND NOT (RateCode.RateCode='General') AND Rate.RateSchedSeqNum=" + rateSchedSeqNum + " GROUP BY RateTypeCode");
 
 			foreach(DataRow dRow in oDataSet.Tables[0].Rows)
 			{
@@ -1118,7 +1118,7 @@ namespace RMS_v3
 				
 			// **** CBNA Check
 			// **** I used this for one particular rate schedule and I think it is just a one case issue. It probably can be removed.
-			oDataSet = db.getDataSet("SELECT * FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND RateCatgryDescr='FFS' AND InOutPatientInd='O' AND RateTypeCode='RevCode' AND RateCode='CBNA' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
+			oDataSet = db.GetDataSet("SELECT * FROM Rate, RateCode WHERE Rate.RateSeqNum=RateCode.RateSeqNum AND RateCatgryDescr='FFS' AND InOutPatientInd='O' AND RateTypeCode='RevCode' AND RateCode='CBNA' AND Rate.RateSchedSeqNum=" + rateSchedSeqNum);
 
 			if (oDataSet.Tables[0].Rows.Count > 0)
 			{
@@ -1131,7 +1131,7 @@ namespace RMS_v3
 			}
 
 			// ******** SETUP ASC Has and Other Variables
-			oDataSet = db.getDataSet("SELECT * FROM Rate WHERE RateCatgryDescr='ASC' AND RateTypeDescr='Main' AND InOutPatientInd='O' and RateSchedSeqNum=" + rateSchedSeqNum);
+			oDataSet = db.GetDataSet("SELECT * FROM Rate WHERE RateCatgryDescr='ASC' AND RateTypeDescr='Main' AND InOutPatientInd='O' and RateSchedSeqNum=" + rateSchedSeqNum);
 
 			if (oDataSet.Tables[0].Rows.Count == 0)
 			{
@@ -1144,13 +1144,13 @@ namespace RMS_v3
 			
 
 				// **** Load ASC Group Table
-				ascGroupDS = db.getDataSet("SELECT * FROM ASCCode WHERE ASCGrpSeqNum=" + ascRateRow["RateValue"]);
+				ascGroupDS = db.GetDataSet("SELECT * FROM ASCCode WHERE ASCGrpSeqNum=" + ascRateRow["RateValue"]);
 				DataColumn[] key = new DataColumn[1];
 				key[0] = ascGroupDS.Tables[0].Columns["ASCCode"];
 				ascGroupDS.Tables[0].PrimaryKey = key;
 
 				// **** Load Rates and Thresholds for groups
-				oDataSet = db.getDataSet("SELECT * FROM Rate WHERE RateCatgryDescr='ASC' AND RateTypeDescr='Group' AND InOutPatientInd='O' AND RateSchedSeqNum=" + rateSchedSeqNum);
+				oDataSet = db.GetDataSet("SELECT * FROM Rate WHERE RateCatgryDescr='ASC' AND RateTypeDescr='Group' AND InOutPatientInd='O' AND RateSchedSeqNum=" + rateSchedSeqNum);
 				rates = new Hashtable();
 				thresholds = new Hashtable();
 
@@ -1161,7 +1161,7 @@ namespace RMS_v3
 				}
 
 				// **** Load Reimbursement Percentages
-				oDataSet = db.getDataSet("SELECT * FROM Rate WHERE RateCatgryDescr='ASC' AND RateTypeDescr='Rate' AND InOutPatientInd='O' AND RateSchedSeqNum=" + rateSchedSeqNum + " ORDER BY RateName ASC");
+				oDataSet = db.GetDataSet("SELECT * FROM Rate WHERE RateCatgryDescr='ASC' AND RateTypeDescr='Rate' AND InOutPatientInd='O' AND RateSchedSeqNum=" + rateSchedSeqNum + " ORDER BY RateName ASC");
 				rateList.Clear();
 
 				foreach(DataRow dRow in oDataSet.Tables[0].Rows)
